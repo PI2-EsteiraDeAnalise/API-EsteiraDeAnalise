@@ -1,17 +1,29 @@
-from flask import Flask, jsonify
-from flask_restful import Resource, Api, abort, reqparse
+from flask import Flask
+from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-
-app = Flask(__name__)
-app.config.from_object(os.getenv('APP_SETTINGS'))
-db = SQLAlchemy(app)
-api = Api(app)
-
+from extensions import db
 from resources.maquinas import Maquinas
 
-api.add_resource(Maquinas, '/maquinas')
+
+def register_extensions(app):
+    db.init_app(app)
+
+
+def create_app(config):
+    app = Flask(__name__)
+    app.config.from_object(config)
+
+    register_extensions(app)
+
+    return app
+
 
 if __name__ == '__main__':
+    app = create_app(os.getenv('APP_SETTINGS'))
+
+    api = Api(app)
+    api.add_resource(Maquinas, '/maquinas')
+
     app.run()

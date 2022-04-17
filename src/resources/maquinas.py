@@ -1,7 +1,7 @@
 from flask_restful import Resource
 from flask import jsonify, request
-from app import db
 
+from extensions import db
 from models import Maquina
 
 class Maquinas(Resource):

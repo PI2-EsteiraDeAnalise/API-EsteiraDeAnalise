@@ -1,6 +1,7 @@
-from app import db
 from sqlalchemy import Column, Integer, DateTime, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
+
+from extensions import db
 
 class Maquina(db.Model):
 
