@@ -5,6 +5,7 @@ import os
 
 from extensions import db, migrate
 from resources.placas import Placas
+from resources.tags import Tags
 
 
 def register_extensions(app):
@@ -26,5 +27,6 @@ if __name__ == '__main__':
 
     api = Api(app)
     api.add_resource(Placas, '/placas')
+    api.add_resource(Tags, '/tags')
 
     app.run(host= "0.0.0.0",port="5000")
