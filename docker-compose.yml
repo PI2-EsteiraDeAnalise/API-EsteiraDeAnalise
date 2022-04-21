@@ -16,7 +16,7 @@ services:
     image: postgres:11.1-alpine
     env_file: .env
     volumes:
-      - ./database:/docker-entrypoint-initdb.d
+      - ./postgres-data:/var/lib/postgresql/data
     ports:
       - ${DB_PORT}:${DB_PORT}
 networks:
