@@ -24,6 +24,7 @@ class Boards(Resource):
     records = Board.query.filter(extract('year', Board.date) == year).filter(extract('month', Board.date) == month).all()
     return [{
       'quantity': len(records),
+      'mes': int(month),
       'successfully': self.get_successfully_boards(records),
       'unsuccessfully': self.get_unsuccessfully_boards(records),
     }]
@@ -34,6 +35,7 @@ class Boards(Resource):
       records = Board.query.filter(extract('year', Board.date) == year).filter(extract('month', Board.date) == k).all()
       response.append({
         'quantity': len(records),
+        'mes': k,
         'successfully': self.get_successfully_boards(records),
         'unsuccessfully': self.get_unsuccessfully_boards(records),
       })
@@ -43,9 +45,9 @@ class Boards(Resource):
     year = request.args.get('year')
     month = request.args.get('month')
     response = []
-    if not ((month is None) and (year is None)):
+    if not (month is None) and not (year is None):
       response = self.request_by_year_and_month(year, month)
-    else if not (year is None):
+    elif not (year is None):
       response = self.request_by_year(year)
     if len(response) == 0:
       return make_response(jsonify({'message': 'Nenhum registro encontrado'}), 404)
