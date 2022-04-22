@@ -43,9 +43,9 @@ class Boards(Resource):
     year = request.args.get('year')
     month = request.args.get('month')
     response = []
-    if not (month is None):
+    if not ((month is None) and (year is None)):
       response = self.request_by_year_and_month(year, month)
-    else:
+    else if not (year is None):
       response = self.request_by_year(year)
     if len(response) == 0:
       return make_response(jsonify({'message': 'Nenhum registro encontrado'}), 404)
