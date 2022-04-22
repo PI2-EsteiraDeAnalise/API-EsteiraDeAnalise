@@ -4,8 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 from extensions import db, migrate
+
 from resources.boards import Boards
 from resources.tags import Tags
+from resources.metrics import Metrics
 
 
 def register_extensions(app):
@@ -26,7 +28,9 @@ if __name__ == '__main__':
     app = create_app()
 
     api = Api(app)
+
     api.add_resource(Boards, '/boards')
     api.add_resource(Tags, '/tags')
+    api.add_resource(Metrics, '/metrics')
 
     app.run(host= "0.0.0.0",port="5000")

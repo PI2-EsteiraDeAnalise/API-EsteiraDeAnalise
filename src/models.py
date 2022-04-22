@@ -40,3 +40,25 @@ class Tag(db.Model):
   
   def __repr__(self):
     return '<tag: {}>'.format(self.name)
+
+class Metric(db.Model):
+
+  __tablename__ = 'metrics'
+
+  id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+  metric = db.Column(db.Integer, nullable=False)
+  description = db.Column(db.String(200), nullable=False)
+
+  def __init__(self, metric, description):
+    self.metric = metric
+    self.description = description
+
+  def serialize(self):
+    return {
+      'id': self.id,
+      'metric': self.metric,
+      'description': self.description,
+    }
+  
+  def __repr__(self):
+    return '<metric: {}>'.format(self.metric)
