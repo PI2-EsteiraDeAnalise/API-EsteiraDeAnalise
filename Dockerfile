@@ -15,6 +15,10 @@ RUN pip install -r requirements.txt
 
 COPY ./src /app
 
+RUN flask db init && \
+  flask db migrate && \
+  flask db upgrade
+
 WORKDIR /app/src
 
 EXPOSE 5000
