@@ -9,8 +9,7 @@ class Coordinate(db.Model):
     tag = db.Column(db.String, nullable=False)
     coordinates = db.Column(db.JSON, nullable=False) 
 
-    def __init__(self, id, tag, coordinates):
-        self.id = id
+    def __init__(self, tag, coordinates):
         self.tag = tag
         self.coordinates = coordinates
 
