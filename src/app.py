@@ -18,7 +18,7 @@ def register_extensions(app):
 
 def create_app():
     app = Flask(__name__)
-    app.config.from_object(os.getenv('APP_SETTINGS'))
+    app.config.from_object(os.getenv("APP_SETTINGS"))
 
     register_extensions(app)
 
@@ -27,13 +27,13 @@ def create_app():
     return app
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = create_app()
 
     api = Api(app)
 
-    api.add_resource(Boards, '/boards')
-    api.add_resource(Tags, '/tags')
-    api.add_resource(Metrics, '/metrics')
+    api.add_resource(Boards, "/boards")
+    api.add_resource(Tags, "/tags")
+    api.add_resource(Metrics, "/metrics")
 
-    app.run(host= "0.0.0.0",port="5000")
+    app.run(host="0.0.0.0", port="5000")
