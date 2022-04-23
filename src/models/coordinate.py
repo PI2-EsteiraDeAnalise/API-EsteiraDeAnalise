@@ -18,7 +18,7 @@ class Coordinate(db.Model):
         return {
             "id": self.id,
             "tag": self.tag,
-            "box": self.coordinates
+            "coordinates": self.coordinates
         }
 
     def __repr__(self):

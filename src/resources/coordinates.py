@@ -21,7 +21,7 @@ class Coordinates(Resource):
     def post(self):
         args = request.get_json()
 
-        coordinate_record = Coordinate(id=args["id"], tag=args["tag"])
+        coordinate_record = Coordinate(tag=args["tag"], coordinates=args["coordinates"])
 
         db.session.add(coordinate_record)
         db.session.commit()
