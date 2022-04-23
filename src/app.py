@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_restful import Api, Resource
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 import os
 
 from extensions import db, migrate
@@ -20,6 +21,8 @@ def create_app():
     app.config.from_object(os.getenv('APP_SETTINGS'))
 
     register_extensions(app)
+
+    CORS(app)
 
     return app
 
