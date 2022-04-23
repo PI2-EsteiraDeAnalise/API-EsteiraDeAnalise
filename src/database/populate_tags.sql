@@ -3,4 +3,4 @@ INSERT INTO tags (name) VALUES
 ('capacitor'),
 ('inductor'),
 ('diode'),
-('transistor'),
+('transistor');
