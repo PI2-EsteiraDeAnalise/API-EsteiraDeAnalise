@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from flask import jsonify, request
+from flask import jsonify, request, make_response
 
 from extensions import db
 from models.coordinate import Coordinate
