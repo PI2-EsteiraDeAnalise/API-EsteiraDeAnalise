@@ -21,21 +21,17 @@ class Boards(Resource):
     return reduce(lambda x, y: x + y, [1 if not board.sucess else 0 for board in boards])
   
   def request_by_year_and_month(self, year, month):
-    records = Board.query.filter(extract('year', Board.date) == year).filter(extract('month', Board.date) == month).all()
-    return [{
-      'quantity': len(records),
-      'mes': int(month),
-      'successfully': self.get_successfully_boards(records),
-      'unsuccessfully': self.get_unsuccessfully_boards(records),
-    }]
-
-  def request_by_year(self, year):
+    if year is None or month is None:
+      return []
     response = []
-    for k in range(1, 13):
-      records = Board.query.filter(extract('year', Board.date) == year).filter(extract('month', Board.date) == k).all()
+    for k in range(1,27,5):
+      initial_date = '{}-{}-{}'.format(year, month, k)
+      final_date = '{}-{}-{}'.format(year, month, k + 4)
+      records = Board.query.filter(Board.date >= initial_date, Board.date <= final_date).all()
       response.append({
-        'quantity': len(records),
-        'mes': k,
+        'day': '{}-{}'.format(k, k+4),
+        'month': int(month),
+        'year': int(year),
         'successfully': self.get_successfully_boards(records),
         'unsuccessfully': self.get_unsuccessfully_boards(records),
       })
@@ -44,11 +40,7 @@ class Boards(Resource):
   def get(self):
     year = request.args.get('year')
     month = request.args.get('month')
-    response = []
-    if not (month is None) and not (year is None):
-      response = self.request_by_year_and_month(year, month)
-    elif not (year is None):
-      response = self.request_by_year(year)
+    response = self.request_by_year_and_month(year, month)
     if len(response) == 0:
       return make_response(jsonify({'message': 'Nenhum registro encontrado'}), 404)
     return make_response(jsonify(response), 200)
