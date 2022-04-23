@@ -1,4 +1,4 @@
-INSERT INTO tags (nome) VALUES
+INSERT INTO tags (name) VALUES
 ('resistor'),
 ('capacitor'),
 ('inductor'),
