@@ -1,7 +1,5 @@
 run:
 	docker-compose up -d --build --remove-orphans
-	docker exec api_esteira chmod +x ./flask_db.sh
-	docker exec api_esteira ./flask_db.sh
 	docker-compose logs -f --tail="all"
 
 network:
