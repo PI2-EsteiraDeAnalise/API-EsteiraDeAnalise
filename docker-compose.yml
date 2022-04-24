@@ -3,19 +3,23 @@ version: "3.3"
 services:
 
   api:
+    container_name: api_esteira
     build:
       context: .
       dockerfile: Dockerfile
     env_file: .env
     volumes:
-      - "./src:/app/src"
-      - "./flask_db.sh:/app/src/flask_db.sh"
+      - "./:/app/"
+      - "./flask_db.sh:/app/flask_db.sh"
+      - "./run_pytest.sh:/app/run_pytest.sh"
+      - "./docker_entrypoint.sh:/app/docker_entrypoint.sh"
     ports:
       - ${APP_PORT}:${APP_PORT}
     depends_on:
       - db
 
   db:
+    container_name: db_esteira
     image: postgres:11.1-alpine
     env_file: .env
     ports:
