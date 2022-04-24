@@ -10,6 +10,7 @@ from resources.boards import Boards
 from resources.tags import Tags
 from resources.metrics import Metrics
 from resources.coordinates import Coordinates
+from resources.coordinate import Coordinate
 
 
 def register_extensions(app):
@@ -37,5 +38,6 @@ if __name__ == "__main__":
     api.add_resource(Tags, "/tags")
     api.add_resource(Metrics, "/metrics")
     api.add_resource(Coordinates, "/coordinates")
+    api.add_resource(Coordinate, "/coordinate/<record_id>")
 
     app.run(host="0.0.0.0", port="5000")

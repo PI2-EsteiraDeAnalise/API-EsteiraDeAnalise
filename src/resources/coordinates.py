@@ -27,10 +27,3 @@ class Coordinates(Resource):
         db.session.commit()
 
         return Coordinate.serialize(coordinate_record), 201
-
-    def delete(self, id):
-        record_id = Coordinate.query.filter_by(id=id)\
-            .first_or_404(description='Record with id={} is not available'.format(id))
-        db.session.delete(record_id)
-        db.session.commit()
-        return '', 204
