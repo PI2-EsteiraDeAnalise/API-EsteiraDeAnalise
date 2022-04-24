@@ -13,10 +13,8 @@ RUN apt-get update && \
 
 RUN pip install -r requirements.txt
 
-COPY ./src /app
-
-WORKDIR /app/src
+COPY . /app
 
 EXPOSE 5000
 
-ENTRYPOINT ["python3", "app.py"]
+ENTRYPOINT ["./docker_entrypoint.sh"]
