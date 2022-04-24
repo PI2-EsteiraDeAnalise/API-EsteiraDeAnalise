@@ -20,3 +20,6 @@ SQLAlchemy==1.4.35
 Werkzeug==2.1.1
 zipp==3.8.0
 Flask-Cors==3.0.10
+mjpeg-http-streamer
+py-mjpeg
+pytest
