@@ -47,3 +47,13 @@ Com isso, já pode seguir para os demais passos.
 
 Após seguir os comandos anteriores, a API estará rodando em sua máquina na porta 5000, desse modo apenas abra [http://localhost:5000](http://localhost:5000)
 para poder visualizá-la em seu navegador padrão. A IA não precisa ser executada, ela está dentro da API.
+
+## Rodando os testes
+
+Os testes também serão executados com a ajuda do Makefile. Para isso, apenas use o comandos abaixo:
+
+* Execute o comando
+
+```bash
+make test
+```
