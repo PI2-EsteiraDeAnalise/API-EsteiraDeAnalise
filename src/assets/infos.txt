@@ -1,0 +1,9 @@
+72 °C, Termopar 1
+72 °C, Termopar 2
+140 °C, Termopar 3
+30 °C, Termopar 4
+75 °C, Termopar 5
+90 °C, Termopar 6
+899 °C, Termopar 7
+102 °C, Termopar 8
+Ativo, Motores
