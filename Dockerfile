@@ -1,4 +1,4 @@
-FROM debian:unstable-slim
+FROM debian:stable
 
 WORKDIR /app
 
