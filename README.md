@@ -1,3 +1,7 @@
+# Apresentação do produto
+
+[![Vídeo da apresentação](https://i.imgur.com/o3Ygef7.png)](https://youtu.be/ix3fNvBvvO8)
+
 # Backend do projeto de Esteira de análise
 
 Nesse repositório está a API e a IA.
